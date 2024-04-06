@@ -1,5 +1,6 @@
 package com.example.balnk.controller
 
+import com.example.balnk.domain.member.Member
 import com.example.balnk.dto.user.request.DeleteMemberRequest
 import com.example.balnk.dto.user.request.PostMemberRequest
 import com.example.balnk.service.user.MemberService

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: 'kotlin_boot'
+  jpa:
+    show-sql: true
+    open-in-view: true
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql:  true
+
+server:
+  port: 8080

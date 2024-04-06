@@ -1,0 +1,20 @@
+GET localhost:8080/member/test
+Accept: application/json
+
+###
+POST localhost:8080/member
+Content-Type: application/json
+
+{
+  "username" : "test_23",
+  "password" : "1234"
+}
+
+####
+DELETE localhost:8080/member
+Content-Type: application/json
+
+{
+"username" : "test_23",
+"password" : "1234"
+}

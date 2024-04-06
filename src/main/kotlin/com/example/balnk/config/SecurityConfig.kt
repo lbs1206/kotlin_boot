@@ -1,0 +1,50 @@
+package com.example.balnk.config
+
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
+import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.security.web.SecurityFilterChain
+
+
+@Configuration
+@EnableWebSecurity
+class SecurityConfig {
+
+    @Bean
+    fun passwordEncoder(): PasswordEncoder {
+        return BCryptPasswordEncoder()
+    }
+
+    @Bean
+    @Throws(Exception::class)
+    fun filterChain(http: HttpSecurity): SecurityFilterChain{
+        http
+            .csrf{
+                it.disable()
+            }
+            .cors { }
+            .headers {}
+            .authorizeHttpRequests{
+                it
+                    .requestMatchers(*allAllowedUris).permitAll()
+                    .requestMatchers(HttpMethod.GET,*getAllowedUris).permitAll()
+                    .requestMatchers(HttpMethod.POST, *postAllowedUris).permitAll()
+                    .requestMatchers(HttpMethod.PUT,*putAllowedUris).permitAll()
+                    .requestMatchers(HttpMethod.DELETE, *deleteAllowedUris).permitAll()
+                    .anyRequest().authenticated()
+            }
+
+
+        return http.build()
+    }
+}
+
+val allAllowedUris = arrayOf("/all")
+val getAllowedUris = arrayOf("/member/test")
+val postAllowedUris = arrayOf("/member")
+val putAllowedUris = arrayOf("/put")
+val deleteAllowedUris = arrayOf("/delete")

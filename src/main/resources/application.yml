@@ -12,5 +12,11 @@ spring:
       hibernate:
         format_sql:  true
 
+
 server:
   port: 8080
+
+jwt:
+  secret: ThisIsTestKeyThisIsTestKeyThisIsTestKeyThisIsTestKeyThisIsTestKeyThisIsTestKey
+  access-expire: 30
+  refresh-expire: 600

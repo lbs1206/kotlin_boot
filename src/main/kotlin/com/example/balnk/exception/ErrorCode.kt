@@ -9,6 +9,7 @@ enum class ErrorCode(val status: HttpStatus, val message: String, val code: Int)
 
     //region 401 - Unauthorized
     AUTH_FAIL(HttpStatus.UNAUTHORIZED, "인증에 실패 했습니다.",401001),
+    InvalidPassword(HttpStatus.UNAUTHORIZED, "잘못된 비밀번호 입니다.", 401002),
     //endregion
 
     //region 404 - Not Found
